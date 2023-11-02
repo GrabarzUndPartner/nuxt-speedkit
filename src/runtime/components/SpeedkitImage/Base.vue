@@ -21,7 +21,7 @@ import { crossorigin as validatorCrossorigin } from '../../utils/validators.mjs'
 import { getImageStyleDescription } from '#speedkit/utils/description.mjs';
 import { getCrossorigin } from '#speedkit/utils';
 import Source from '#speedkit/components/SpeedkitImage/classes/Source';
-import useCritical from '#speedkit/composables/critical';
+import useCritical from '#speedkit/composables/defineCritical';
 
 import { ref, useImage, useNuxtApp, useHead, computed } from '#imports';
 

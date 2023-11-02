@@ -7,6 +7,7 @@
       :sources="picture.sources"
     />
     <h1 class="headline">
+      {{ isCritical }}
       <span
         v-font="[
           $getFont('Montserrat Alternates', 700, 'normal', {
@@ -29,12 +30,21 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, useAttrs } from 'vue';
+import defineCritical from '#speedkit/composables/defineCritical';
 import SpeedkitPicture from '#speedkit/components/SpeedkitPicture';
 import SpeedkitImage from '#speedkit/components/SpeedkitImage';
 import SvgChevronDown from '@/assets/svg/chevron-down.svg';
 import useFonts from '#speedkit/composables/fonts';
-const { $getFont } = useFonts();
+
+// Define Component as critical component, if `attr` critical defined.
+const attrs = useAttrs();
+
+const { isCritical } = defineCritical('critical' in attrs);
+
+const { $getFont } = useFonts({
+  critical: isCritical.value
+});
 
 const ready = ref(false);
 

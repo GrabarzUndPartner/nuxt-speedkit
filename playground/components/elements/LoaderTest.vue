@@ -7,9 +7,9 @@
 <script setup>
 import { ref } from 'vue';
 import { onMounted } from '#imports';
-import useCritical from '#speedkit/composables/critical';
+import defineCritical from '#speedkit/composables/defineCritical';
 
-const { isCritical } = useCritical();
+const { isCritical } = defineCritical();
 const active = ref(false);
 
 onMounted(() => (active.value = true));

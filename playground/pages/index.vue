@@ -1,18 +1,13 @@
 <template>
   <div class="page-index">
-    <module-stage v-bind="stage" />
+    <module-stage v-bind="stage" critical />
     <module-text-a v-bind="textA" />
     <module-image-text v-bind="imageTextA" />
-    <module-video-youtube v-bind="videoYoutube" />
-    <module-video-vimeo v-bind="videoVimeoA" />
-    <module-text-a v-bind="textA" />
-    <module-image-text v-bind="imageTextB" />
-    <module-text-b v-bind="textB" />
-    <module-video-vimeo v-bind="videoVimeoB" />
   </div>
 </template>
 
 <script setup>
+/* eslint-disable no-unused-vars */
 import speedkitHydrate from '#speedkit/hydrate';
 
 const ModuleStage = speedkitHydrate(() => import('@/components/modules/Stage'));
@@ -33,7 +28,6 @@ const ModuleVideoVimeo = speedkitHydrate(() =>
 );
 
 const stage = {
-  critical: true,
   content: 'nuxt-speedkit',
   claim: 'powered by Grabarz & Partner',
 

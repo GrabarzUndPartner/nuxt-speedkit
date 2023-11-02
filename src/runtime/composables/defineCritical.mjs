@@ -1,15 +1,8 @@
-import { computed, ref, inject, provide, useAttrs } from 'vue';
-
+import { computed, ref, inject, provide } from 'vue';
 const criticalContextKey = Symbol('criticalContext');
 
-export default function useFonts({ critical } = {}) {
-  const attrs = useAttrs();
-
-  const currentCritical = ref(
-    !('critical' in attrs)
-      ? critical
-      : attrs.critical === '' || String(attrs.critical) === 'true'
-  );
+export default function defineCritical(critical = false) {
+  const currentCritical = ref(critical);
 
   const criticalInject = inject(
     criticalContextKey,
@@ -23,9 +16,16 @@ export default function useFonts({ critical } = {}) {
   });
 
   provide(criticalContextKey, isCritical.value || critical);
-
+  console.log('isCritical', isCritical.value);
   return {
     isCritical,
     critical: criticalInject
+  };
+}
+
+export function useCritical() {
+  const isCritical = inject(criticalContextKey, false);
+  return {
+    isCritical
   };
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page-header v-model="menuOpened" v-bind="pageHeaderData" />
+    <!-- <page-header v-model="menuOpened" v-bind="pageHeaderData" /> -->
     <main :inert="menuOpened">
       <slot />
     </main>
@@ -10,6 +10,7 @@
 </template>
 
 <script setup>
+/* eslint-disable no-unused-vars */
 import 'wicg-inert';
 import { ref, defineAsyncComponent, computed } from 'vue';
 import { useRoute, useHead } from '#app';

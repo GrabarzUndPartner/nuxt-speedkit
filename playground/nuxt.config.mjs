@@ -20,12 +20,19 @@ export default defineNuxtConfig(async () => {
 
     builder: getBuilder(),
 
+    nitro: {
+      prerender: {
+        routes: ['/'],
+        crawlLinks: false
+      }
+    },
+
     ssr: true,
 
     runtimeConfig: {
       public: {
         githubRepoUrl: repository.url,
-        disableInfoLayer: false
+        disableInfoLayer: true
       }
     },
 
@@ -63,7 +70,7 @@ export default defineNuxtConfig(async () => {
     vite: {
       plugins: [
         svgLoader({
-          defaultImport: 'component' // or 'raw'
+          defaultImport: 'component'
         })
       ]
     },
@@ -84,11 +91,6 @@ export default defineNuxtConfig(async () => {
       order: 'cssnanoLast'
     },
 
-    buildModules: [
-      isDev && '@nuxtjs/eslint-module',
-      isDev && '@nuxtjs/stylelint-module'
-    ].filter(Boolean),
-
     image: {
       // The screen sizes predefined by `@nuxt/image`:
       screens: {
@@ -102,12 +104,14 @@ export default defineNuxtConfig(async () => {
         xxl: 1600,
         '4k': 1921
       },
+
       domains: [
         'https://picsum.photos',
         'https://img.youtube.com',
         'https://i.vimeocdn.com',
         'https://i.pickadummy.com'
       ],
+
       alias: {
         picsum: 'https://picsum.photos',
         youtube: 'https://img.youtube.com',
@@ -395,7 +399,7 @@ export default defineNuxtConfig(async () => {
       ]
     },
 
-    modules: ['../src/module']
+    modules: ['../src/module'].filter(Boolean)
   };
 });
 

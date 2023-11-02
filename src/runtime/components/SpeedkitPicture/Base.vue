@@ -21,7 +21,7 @@
 <script>
 import { getPictureStyleDescription } from '../../utils/description.mjs';
 import { crossorigin as validatorCrossorigin } from '../../utils/validators.mjs';
-import useCritical from '#speedkit/composables/critical';
+import useCritical from '#speedkit/composables/defineCritical';
 import BaseImage from '#speedkit/components/SpeedkitImage/Base';
 import SourceList from '#speedkit/components/SpeedkitPicture/classes/SourceList';
 import PictureSource from '#speedkit/components/SpeedkitPicture/Source';

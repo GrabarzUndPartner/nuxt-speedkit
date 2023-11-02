@@ -1,28 +1,29 @@
 import { computed, reactive } from 'vue';
+import { useCritical } from './defineCritical.mjs';
 import { useHead } from '#imports';
 import { useNuxtApp } from '#app';
 import FontCollection from '#speedkit/classes/FontCollection';
-import useCritical from '#speedkit/composables/critical';
 import useConfig from '#speedkit/composables/config';
 
-export default function useFonts(context) {
-  const { isCritical, critical } = useCritical(context);
-
+export default function useFonts({ critical } = {}) {
   const runtimeConfig = useConfig();
+  const { isCritical } = useCritical();
+
+  critical = critical || isCritical;
 
   const nuxtApp = useNuxtApp();
 
   const fontCollection = reactive(new FontCollection());
 
+  console.log('critical?', critical);
+
   writeHead(isCritical, fontCollection, runtimeConfig);
 
   return {
-    isCritical,
-    critical,
     $getFont: (...args) => {
       return {
         runtimeConfig,
-        isCritical: isCritical.value,
+        isCritical: critical,
         fontCollection,
         definition: nuxtApp.$speedkit.getFont(...args)
       };

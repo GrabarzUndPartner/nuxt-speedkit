@@ -19,6 +19,7 @@
     "editor.codeActionsOnSave": {
       "source.fixAll": true
     },
+    "postcss.validate": false,
     "eslint.validate": [
       "javascript",
       "javascriptreact",
