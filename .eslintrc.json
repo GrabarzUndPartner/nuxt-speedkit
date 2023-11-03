@@ -11,7 +11,8 @@
     "plugin:sonarjs/recommended",
     "plugin:no-unsanitized/DOM",
     "plugin:jsonc/recommended-with-json",
-    "prettier"
+    "prettier",
+    "./playground/.nuxt/.eslint.gloabls.json"
   ],
   "overrides": [
     {
