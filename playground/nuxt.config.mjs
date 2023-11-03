@@ -395,7 +395,7 @@ export default defineNuxtConfig(async () => {
       ]
     },
 
-    modules: ['@/modules/auto-import-eslint.js', '../src/module']
+    modules: ['@/modules/auto-import-eslint.mjs', '../src/module']
   };
 });
 

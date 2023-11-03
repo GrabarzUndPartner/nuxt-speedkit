@@ -7,12 +7,12 @@
   },
   "extends": [
     "@nuxtjs",
+    "./playground/.nuxt/.eslint.globals.json",
     "plugin:security/recommended",
     "plugin:sonarjs/recommended",
     "plugin:no-unsanitized/DOM",
     "plugin:jsonc/recommended-with-json",
-    "prettier",
-    "./playground/.nuxt/.eslint.gloabls.json"
+    "prettier"
   ],
   "overrides": [
     {

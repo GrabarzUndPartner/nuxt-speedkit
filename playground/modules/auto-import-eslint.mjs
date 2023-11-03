@@ -30,7 +30,7 @@ const autoImportEslint = defineNuxtModule({
     nuxt.hook('imports:extend', composableImport => {
       // console.log('imports:extend', composableImport)
       autoImports.composables = composableImport.map(autoImport => {
-        if (autoImport.as) return autoImport?.toString();
+        if (autoImport.as) return autoImport?.as?.toString();
         return autoImport.name.toString();
       });
     });
@@ -39,7 +39,7 @@ const autoImportEslint = defineNuxtModule({
       // console.log('autoImports', autoImports)
 
       const outDir = basename(nuxt.options.buildDir);
-      const filename = '.eslint.gloabls.json';
+      const filename = '.eslint.globals.json';
       const fullPath = resolve(outDir, filename);
 
       const getContents = () => {
